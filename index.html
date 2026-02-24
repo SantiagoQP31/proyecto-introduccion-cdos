@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Paradoja Colombiana</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-container">
+            <h1 class="title">La Paradoja<br>Colombiana.</h1>
+            <p class="subtitle">De qué estamos hechos cuando sonreímos.</p>
+            <div class="scroll-down">↓ Desliza para explorar</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="story-block">
+            <div class="text-column">
+                <div class="sticky-content">
+                    <span class="chapter">01. El Contexto</span>
+                    <h2>El vecindario que desafía la lógica.</h2>
+                    <p>América Latina es un continente que sonríe a pesar de las grietas. En el mapa frío de los números, nuestro vecindario es un caso de estudio fascinante: a pesar de los inmensos desafíos económicos y la desigualdad, nuestras barras se alzan fuertes.</p>
+                    <p>No es el dinero lo que lidera el gráfico, es la resiliencia pura, el calor humano y una libertad obstinada para buscar la alegría en medio de la adversidad.</p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <img src="imgs/stacked_bar_chart_latam.png" alt="Gráfico Latam" class="data-img fade-in">
+                <img src="imgs/latam_cultura.jpg" alt="Cultura Latina" class="photo-img fade-in">
+                <p class="caption fade-in">Mercado local en Latinoamérica. La vitalidad de la región contrasta con sus retos económicos.</p>
+            </div>
+        </section>
+
+        <section class="story-block">
+            <div class="text-column">
+                <div class="sticky-content">
+                    <span class="chapter">02. La Caída</span>
+                    <h2>El pulso de un país herido.</h2>
+                    <p>Esa línea no es una simple estadística; son los latidos de Colombia. Tocamos un pico de esperanza entre 2012 y 2016, soñando con un país en paz. Pero la línea se desploma abruptamente hacia el 2021.</p>
+                    <p>No fue solo un virus; fue un país fracturado por el Paro Nacional, el hambre en las calles, la polarización y la incertidumbre. Fue el momento en el que la sonrisa de nuestra nación se quebró casi por completo.</p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <img src="imgs/happiness_through_years_colombia.png" alt="Gráfico Colombia" class="data-img fade-in">
+                <img src="imgs/paro_nacional_2021.jpg" alt="Paro Nacional 2021" class="photo-img fade-in">
+                <p class="caption fade-in">Estallido social en Colombia durante 2021. Un punto de inflexión en la percepción de bienestar.</p>
+            </div>
+        </section>
+
+        <section class="story-block">
+            <div class="text-column">
+                <div class="sticky-content">
+                    <span class="chapter">03. La Resiliencia</span>
+                    <h2>Lo que nos mantiene a flote.</h2>
+                    <p>Si la crisis de 2021 fue tan profunda, ¿por qué nuestro puntaje no llegó a cero? Al abrir la historia, los datos revelan nuestro mayor secreto: <strong>El Soporte Social</strong>.</p>
+                    <p>Esa gruesa franja naranja que no cede ante la inflación ni la corrupción. Cuando el Estado falla, es la red invisible del vecino, el sancocho familiar del domingo y la olla comunitaria lo que nos rescata del abismo. Nos salvamos los unos a los otros.</p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <img src="imgs/colombia_happiness_composition_area.png" alt="Área apilada Colombia" class="data-img fade-in">
+                <img src="imgs/soporte_social.jpg" alt="Soporte social" class="photo-img fade-in">
+                <p class="caption fade-in">El apoyo comunitario se convierte en el principal amortiguador frente a las crisis institucionales.</p>
+            </div>
+        </section>
+
+        <section class="story-block">
+            <div class="text-column">
+                <div class="sticky-content">
+                    <span class="chapter">04. Conclusión</span>
+                    <h2>La paradoja de nuestra riqueza.</h2>
+                    <p>Míranos allí, iluminados en amarillo, lejos de los países más ricos del mundo, pero asombrosamente altos en nuestra capacidad de ser felices.</p>
+                    <p>La historia final que nos cuentan estos datos es que el colombiano aprendió, quizás a la fuerza, a desligar su bienestar de su cuenta bancaria. Somos un país que construye su alegría sobre pilares más profundos que el oro.</p>
+                </div>
+            </div>
+            <div class="visual-column">
+                <img src="imgs/scatter_wealth_vs_happiness.png" alt="Riqueza vs Felicidad" class="data-img fade-in">
+                <img src="imgs/paradoja_riqueza.jpg" alt="Alegría en Colombia" class="photo-img fade-in">
+                <p class="caption fade-in">La riqueza emocional e interpersonal a menudo trasciende las limitaciones materiales.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.15, // La imagen aparece cuando el 15% de ella entra en pantalla
+            rootMargin: "0px 0px -50px 0px" // Margen para que aparezca un poco antes de llegar al centro
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
