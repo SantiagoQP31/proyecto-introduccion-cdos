@@ -1,0 +1,182 @@
+/* Reseteo y variables */
+:root {
+    --bg-color: #080808; /* Negro muy profundo, casi editorial */
+    --text-main: #f4f4f4;
+    --text-muted: #888888;
+    --accent: #FCD116; /* Amarillo Colombia */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, .chapter {
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- HERO (Portada Minimalista) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    
+    /* --- INICIO DE LA INTEGRACIÓN DE LA IMAGEN --- */
+    /* El gradiente actúa como un velo que asegura que el texto sea legible 
+       y hace que la imagen se difumine hacia el negro del body al hacer scroll */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(8, 8, 8, 0.4), /* Opacidad arriba (ajusta este 0.6 si la quieres más clara/oscura) */
+        rgba(8, 8, 8, 1)    /* Negro sólido abajo para fusionarse con el main */
+    ), url('imgs/hero_fondo.jpg'); /* Ojo: cambia .jpg a .png o .webp según el formato de tu imagen */
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax sutil, muy propio de webs editoriales */
+    /* --- FIN DE LA INTEGRACIÓN --- */
+}
+
+.hero-container {
+    max-width: 800px;
+}
+
+.title {
+    font-size: clamp(4rem, 8vw, 8rem); /* Tipografía responsiva enorme */
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.scroll-down {
+    margin-top: 60px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+/* --- BLOQUES DE HISTORIA (Grid Asimétrico) --- */
+.story-block {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 5%;
+    gap: 80px;
+    border-bottom: 1px solid #222; /* Línea divisoria sutil */
+}
+
+.story-block:last-child {
+    border-bottom: none;
+}
+
+/* Columna de Texto (Izquierda) */
+.text-column {
+    flex: 1; /* Ocupa menos espacio */
+    position: relative;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 150px; /* Se queda pegado a esta distancia del techo */
+}
+
+.chapter {
+    display: block;
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.sticky-content h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+.sticky-content p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+/* Columna Visual (Derecha) */
+.visual-column {
+    flex: 1.5; /* Ocupa más espacio para que las fotos luzcan */
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 50px; /* Para que al hacer scroll, el texto llegue primero */
+}
+
+.data-img {
+    width: 100%;
+    border-radius: 4px;
+    background-color: white; /* Por si tus gráficos tienen fondo transparente */
+    padding: 10px; /* Un pequeño marco blanco para el gráfico */
+}
+
+.photo-img {
+    width: 100%;
+    border-radius: 4px;
+    filter: grayscale(30%) contrast(110%); /* Toque fotográfico documental */
+}
+
+.caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-left: 2px solid var(--accent);
+    padding-left: 15px;
+    font-style: italic;
+}
+
+/* --- RESPONSIVE (Para móviles) --- */
+@media (max-width: 900px) {
+    .story-block {
+        flex-direction: column;
+        padding: 60px 5%;
+        gap: 40px;
+    }
+    .sticky-content {
+        position: relative; /* Quita el sticky en móviles */
+        top: 0;
+    }
+}
+
+/* --- ANIMACIONES DE SCROLL (Fade-in) --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza un poco más abajo */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform; /* Optimiza el rendimiento de la animación */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su posición original */
+}
