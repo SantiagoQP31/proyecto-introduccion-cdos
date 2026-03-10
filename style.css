@@ -180,3 +180,89 @@ h1, h2, .chapter {
     opacity: 1;
     transform: translateY(0); /* Sube a su posición original */
 }
+
+/* --- FOOTER --- */
+footer {
+    background-color: #0c0c0c; /* Un poco más claro que el fondo para diferenciar */
+    padding: 80px 5%;
+    border-top: 1px solid #222;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer h2 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 50px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Equipo */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.team-card {
+    background-color: #1a1a1a;
+    padding: 25px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    flex: 0 1 250px;
+    max-width: 350px;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Fuente de datos */
+.data-source,
+.more-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.data-source {
+    margin-bottom: 80px; /* Espacio idéntico al del bloque superior */
+}
+
+.data-source p,
+.more-info p {
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+.data-source a,
+.more-info a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent);
+    transition: background-color 0.3s ease;
+}
+
+.data-source a:hover,
+.more-info a:hover {
+    background-color: rgba(252, 209, 22, 0.1);
+}
